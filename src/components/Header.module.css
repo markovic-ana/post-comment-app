@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Brygada+1918:wght@700&display=swap');
+
+.titleTop {
+  font-family: 'Brygada 1918', serif;
+  font-size: 3em;
+  text-decoration: underline;
+  text-align: center;
+  margin-bottom: -5px;
+  padding-bottom: 0px;
+}
+
+.titleBottom {
+  font-family: 'Brygada 1918', serif;
+  font-size: 1em;
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 0px;
+}
