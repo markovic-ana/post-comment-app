@@ -1,33 +1,15 @@
 import './App.css'
 import Header from './components/Header'
 import Posts from './components/Posts'
-import { useEffect, useState } from 'react'
+import useFetch from './hooks/useFetch'
 
 function App() {
-  const [posts, setPosts] = useState([])
-  const [users, setUsers] = useState([])
-
-  useEffect(() => {
-    requestPosts()
-    requestUsers()
-  }, [])
-
-  async function requestPosts() {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts`)
-    const json = await response.json()
-    setPosts(json)
-  }
-
-  async function requestUsers() {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/users`)
-    const json = await response.json()
-    setUsers(json)
-  }
-
+  const [data] = useFetch('https://jsonplaceholder.typicode.com/posts')
+  const [users] = useFetch('https://jsonplaceholder.typicode.com/users')
   return (
     <div>
       <Header />
-      <Posts posts={posts} users={users} />
+      <Posts posts={data} users={users} />
     </div>
   )
 }
