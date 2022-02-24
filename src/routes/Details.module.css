@@ -1,0 +1,29 @@
+.title {
+  padding: 0;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 3%;
+  font-size: 1.8rem;
+  font-family: 'Brygada 1918', serif;
+  padding: 0.4em;
+}
+
+.post {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+}
+
+.author {
+  color: #0e470e;
+  padding: 0;
+  font-weight: 700;
+  padding: 5%;
+  text-align: end;
+}
+
+.commentTitle {
+  padding: 0;
+  font-family: 'Brygada 1918', serif;
+  padding-left: 6.4px;
+  font-size: 20px;
+}
