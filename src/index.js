@@ -3,24 +3,14 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Posts from './components/Posts'
 import Layout from './Layout.js'
-import Post from './components/Post'
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="posts" element={<Posts />} />
-        <Route
-          path="posts/:id"
-          element={
-            <Layout>
-              <Post />
-            </Layout>
-          }
-        />
+        <Route path="posts/:id" element={<Layout />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

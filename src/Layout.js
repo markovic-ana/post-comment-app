@@ -1,12 +1,15 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Header from './components/Header'
+import Details from './routes/Details'
 
 const Layout = () => {
   return (
     <div>
-      <Header />
-      <Outlet />
+      <Link to="/">
+        <Header />
+      </Link>
+      <Details />
     </div>
   )
 }
