@@ -28,7 +28,7 @@
   border-bottom: 2px solid green;
 }
 
-.link {
+a {
   text-decoration: none;
   text-align: end;
   font-size: 0.8em;

@@ -4,12 +4,13 @@ import Posts from './components/Posts'
 import useFetch from './hooks/useFetch'
 
 function App() {
-  const [data] = useFetch('https://jsonplaceholder.typicode.com/posts')
+  const [posts] = useFetch('https://jsonplaceholder.typicode.com/posts')
   const [users] = useFetch('https://jsonplaceholder.typicode.com/users')
+
   return (
     <div>
       <Header />
-      <Posts posts={data} users={users} />
+      <Posts posts={posts} users={users} />
     </div>
   )
 }
