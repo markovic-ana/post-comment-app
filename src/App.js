@@ -2,7 +2,7 @@ import './App.css'
 import Header from './components/Header'
 import Posts from './components/Posts'
 import useFetch from './hooks/useFetch'
-import { useSearchParams } from 'react-router-dom'
+import Search from './components/Search.js'
 
 function App() {
   const [posts] = useFetch('https://jsonplaceholder.typicode.com/posts')
@@ -11,6 +11,7 @@ function App() {
   return (
     <div className=".container">
       <Header />
+      <Search posts={posts} />
       <Posts posts={posts} users={users} />
     </div>
   )
