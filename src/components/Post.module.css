@@ -16,16 +16,6 @@
   font-family: 'Noto Sans', sans-serif;
   padding-bottom: 0px;
   font-size: 15px;
-}
-
-.author {
-  font-family: 'Noto Sans', sans-serif;
-  font-style: italic;
-  text-align: end;
-  color: rgba(0, 0, 0, 0.432);
-  padding-top: 0px;
-  margin-top: 0px;
-  padding-bottom: 0;
   border-bottom: 2px solid green;
 }
 
