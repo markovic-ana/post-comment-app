@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   font-family: 'Noto Sans', sans-serif;
+  text-align: left;
 }
 
 .title {
@@ -17,6 +18,8 @@
   padding-bottom: 0px;
   font-size: 15px;
   border-bottom: 2px solid green;
+  padding-left: 0;
+  padding-bottom: 2%;
 }
 
 a {

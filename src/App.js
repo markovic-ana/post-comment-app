@@ -11,7 +11,7 @@ function App() {
   return (
     <div className=".container">
       <Header />
-      <Search posts={posts} />
+      {/* <Search posts={posts} /> */}
       <Posts posts={posts} users={users} />
     </div>
   )

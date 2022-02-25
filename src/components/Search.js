@@ -1,12 +1,11 @@
 import { useSearchParams, Link } from 'react-router-dom'
 import Searchstyles from './Posts.module.css'
-import useFetch from '../hooks/useFetch'
 
 const Posts = ({ posts }) => {
   let [searchParams, setSearchParams] = useSearchParams()
 
   return (
-    <div>
+    <div className={Searchstyles.container}>
       <div className={Searchstyles.input}>
         <input
           style={{
