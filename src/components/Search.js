@@ -6,7 +6,7 @@ const Posts = ({ posts }) => {
 
   return (
     <div className={Searchstyles.container}>
-      <div className={Searchstyles.input}>
+      <div>
         <input
           style={{
             width: '100%',
