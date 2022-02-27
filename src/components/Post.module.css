@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
 .post {
-  margin-top: 1em;
   display: flex;
   flex-direction: column;
   font-family: 'Noto Sans', sans-serif;
   text-align: left;
+  border-bottom: 3px solid black;
 }
 
 .title {

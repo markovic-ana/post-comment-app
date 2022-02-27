@@ -35,10 +35,9 @@ const Posts = ({ posts }) => {
             return title.startsWith(posts.toLowerCase())
           })
           .map((post) => (
-            <div>
+            <div key={post.id}>
               <Link to={`/posts/${post.id}`} key={post.id}>
                 <Post
-                  key={post.id}
                   id={post.id}
                   post={post}
                   title={post.title}

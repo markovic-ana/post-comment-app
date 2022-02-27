@@ -11,6 +11,7 @@ const Posts = ({ posts }) => {
           style={{
             width: '100%',
             border: '2px solid green',
+            outline: 'none',
           }}
           value={searchParams.get('posts') || ''}
           placeholder="Searching for a review?"

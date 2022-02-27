@@ -1,13 +1,47 @@
 import React from 'react'
 import Poststyles from './Post.module.css'
-import { Link } from 'react-router-dom'
+import useFetch from '../hooks/useFetch'
+import { useEffect, useState } from 'react'
 
-const Post = ({ id, title, body, userId }) => {
+const Post = ({ id, title, body }) => {
+  const [comments, setComments] = useState([])
+  const [commentsData, loading] = useFetch(
+    'https://jsonplaceholder.typicode.com/comments'
+  )
+
+  useEffect(() => {
+    if (!loading) {
+      setComments(commentsData)
+    }
+  }, [])
+
+  useEffect(() => {
+    const commentsOnPost = commentsData.filter(
+      (comment) => comment.postId === id
+    )
+
+    if (!loading) {
+      setComments(commentsOnPost)
+    }
+  }, [commentsData, comments.postId, loading, id])
+
   return (
     <div className={Poststyles.post}>
       <h2 className={Poststyles.title}>{title}</h2>
       <p className={Poststyles.text}>{body}</p>
-      <Link to={`/posts/${id}`}>View Post</Link>
+
+      {comments.map((comment) => (
+        <div key={comment.id}>
+          <p
+            style={{
+              textAlign: 'left',
+              paddingLeft: '0',
+            }}
+          >
+            {comment.body}
+          </p>
+        </div>
+      ))}
     </div>
   )
 }

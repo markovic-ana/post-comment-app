@@ -8,3 +8,7 @@
 .container {
   margin: 30px;
 }
+
+input:focus {
+  outline: none;
+}

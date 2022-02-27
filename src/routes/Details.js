@@ -8,7 +8,6 @@ import Detailsstyles from './Details.module.css'
 const Details = () => {
   const [post, setPost] = useState({})
   const [comments, setComments] = useState([])
-  const [users, setUsers] = useState([])
   const [user, setUser] = useState({})
 
   let params = useParams()
@@ -18,7 +17,9 @@ const Details = () => {
   let [commentsData] = useFetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}/comments`
   )
-  let [usersData] = useFetch(`https://jsonplaceholder.typicode.com/users`)
+  let [usersData, loading] = useFetch(
+    `https://jsonplaceholder.typicode.com/users`
+  )
 
   useEffect(() => {
     if (data[0]) {
@@ -27,21 +28,22 @@ const Details = () => {
     if (commentsData) {
       setComments(commentsData)
     }
-    if (usersData) {
-      setUsers(usersData)
-      const getUser = users.filter((user) => user.id === post.userId)
-      if (getUser[0]) {
-        return setUser(getUser[0])
-      }
-    }
   }, [data, commentsData, usersData])
+
+  useEffect(() => {
+    const author = usersData.find((user) => user.id === post.userId)
+
+    if (!loading) {
+      setUser(author)
+    }
+  }, [usersData, post.userId, loading])
 
   if (!post) {
     return <h1>Loading...</h1>
   }
   if (post) {
     return (
-      <div>
+      <div key={post.id}>
         <h2 className={Detailsstyles.title}>{post?.title}</h2>
         <p className={Detailsstyles.post}>{post?.body}</p>
         <p className={Detailsstyles.author}> -{user?.name}</p>
