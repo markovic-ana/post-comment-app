@@ -1,4 +1,3 @@
-import { getDefaultNormalizer } from '@testing-library/react'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import useFetch from '../hooks/useFetch.js'
@@ -11,24 +10,20 @@ const Details = () => {
   const [user, setUser] = useState({})
 
   let params = useParams()
-  let [data] = useFetch(
+  let [postData, loading] = useFetch(
     `https://jsonplaceholder.typicode.com/posts?id=${params.id}`
   )
   let [commentsData] = useFetch(
     `https://jsonplaceholder.typicode.com/posts/${params.id}/comments`
   )
-  let [usersData, loading] = useFetch(
-    `https://jsonplaceholder.typicode.com/users`
-  )
+  let [usersData] = useFetch(`https://jsonplaceholder.typicode.com/users`)
 
   useEffect(() => {
-    if (data[0]) {
-      setPost(data[0])
-    }
-    if (commentsData) {
+    if (!loading) {
+      setPost(postData[0])
       setComments(commentsData)
     }
-  }, [data, commentsData, usersData])
+  }, [postData, commentsData, usersData, loading])
 
   useEffect(() => {
     const author = usersData.find((user) => user.id === post.userId)
