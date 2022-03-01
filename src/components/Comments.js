@@ -1,20 +1,23 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import useFetch from '../hooks/useFetch'
 
 const Comments = () => {
   const [comments, setComments] = useState([])
+  const [commentsData, loading] = useFetch(
+    'https://jsonplaceholder.typicode.com/comment'
+  )
 
   useEffect(() => {
-    requestComments()
+    if (!loading) {
+      setComments(commentsData)
+    }
   }, [])
 
-  async function requestComments() {
-    const response = await fetch(
-      'https://jsonplaceholder.typicode.com/comments'
-    )
-    const json = await response.json()
-    setComments(json)
+  if (!comments) {
+    return <p>...Loading</p>
   }
+
   return comments.map((comment) => <div>{comment.body}</div>)
 }
 

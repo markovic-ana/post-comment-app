@@ -4,15 +4,22 @@ import Posts from './components/Posts'
 import useFetch from './hooks/useFetch'
 
 function App() {
-  const [posts] = useFetch('https://jsonplaceholder.typicode.com/posts')
+  const [posts, loading] = useFetch(
+    'https://jsonplaceholder.typicode.com/posts'
+  )
   const [users] = useFetch('https://jsonplaceholder.typicode.com/users')
 
-  return (
-    <div className=".container">
-      <Header />
-      <Posts posts={posts} users={users} />
-    </div>
-  )
+  if (!posts) {
+    return <div>...Loading</div>
+  }
+  if (posts) {
+    return (
+      <div className=".container">
+        <Header />
+        <Posts posts={posts} users={users} />
+      </div>
+    )
+  }
 }
 
 export default App
