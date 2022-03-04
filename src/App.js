@@ -1,7 +1,7 @@
 import './App.css'
 import Header from './components/Header'
 import Posts from './components/Posts'
-import useFetch from './hooks/useFetch'
+import useFetch from './utils/useFetch'
 
 function App() {
   const [posts, loading] = useFetch(

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import useFetch from '../hooks/useFetch.js'
+import useFetch from '../utils/useFetch.js'
 import Comments from './Comments.js'
 import Detailsstyles from './Details.module.css'
 

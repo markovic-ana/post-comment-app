@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import useFetch from '../hooks/useFetch'
+import useFetch from '../utils/useFetch'
 
 const Comments = () => {
   const [comments, setComments] = useState([])

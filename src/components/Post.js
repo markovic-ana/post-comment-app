@@ -1,6 +1,6 @@
 import React from 'react'
 import Poststyles from './Post.module.css'
-import useFetch from '../hooks/useFetch'
+import useFetch from '../utils/useFetch'
 import { useEffect, useState } from 'react'
 
 const Post = ({ id, title, body }) => {
