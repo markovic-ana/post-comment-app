@@ -1,13 +1,14 @@
 import React from 'react'
 import Poststyles from './Post.module.css'
-import useFetch from '../utils/useFetch'
+import useFetch from '../../../utils/useFetch'
 import { useEffect, useState } from 'react'
+import { CommentProps } from '../../../types/CommentTypes'
 
 const Post = ({ id, title, body }) => {
   const [comments, setComments] = useState([])
   const [commentsData, loading] = useFetch(
     'https://jsonplaceholder.typicode.com/comments'
-  )
+  ) as any
 
   useEffect(() => {
     if (!loading) {
@@ -16,14 +17,14 @@ const Post = ({ id, title, body }) => {
   }, [])
 
   useEffect(() => {
-    const commentsOnPost = commentsData.filter(
-      (comment) => comment.postId === id
+    const commentsOnPost = comments.filter(
+      (comment: CommentProps) => comment.postId === id
     )
 
     if (!loading) {
       setComments(commentsOnPost)
     }
-  }, [commentsData, comments.postId, loading, id])
+  }, [commentsData, comments, loading, id])
 
   return (
     <div className={Poststyles.post}>

@@ -2,20 +2,19 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Layout from './Layout.js'
-import Posts from './components/Posts.js'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Routes } from '../node_modules/react-router-dom/index'
+import Posts from './components/PostList/Posts'
+import Layout from './routes/Layout'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="posts" element={<Posts />} />
-        <Route path="posts/:id" element={<Layout />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <Router>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="posts" element={<Posts />} />
+      <Route path="posts/:id" element={<Layout />} />
+    </Routes>
+  </Router>,
   document.getElementById('root')
 )
 
