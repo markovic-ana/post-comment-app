@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import { useSearchParams } from '../../../node_modules/react-router-dom/index.js'
 import useFetch from '/Users/ana/Documents/Projects/Post-Comment-TypeScript-App/post-comment-app/src/utils/useFetch'
 import React, { useState, useEffect } from 'react'
-import { PostProps } from '../../types/PostTypes'
 
 const Posts = () => {
   const [searchParams, setSearchParams] = useSearchParams()
-  const [posts, setPosts] = useState<PostProps[]>([])
+  const [posts, setPosts] = useState([])
   let [postsData, loading] = useFetch(
     'https://jsonplaceholder.typicode.com/posts'
   ) as any
@@ -16,8 +15,7 @@ const Posts = () => {
     if (!loading) {
       setPosts(postsData)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [loading, postsData])
 
   if (!posts) {
     return <div>...Loading</div>
@@ -52,8 +50,8 @@ const Posts = () => {
           })
           .map((post) => (
             <div key={post.id}>
-              <Link to={`/posts/${post.id}`} key={post.id}>
-                <Post id={post.id} title={post.title} body={post.body} />
+              <Link to={`/posts/${post.id}`}>
+                <Post post={post} />
               </Link>
             </div>
           ))}

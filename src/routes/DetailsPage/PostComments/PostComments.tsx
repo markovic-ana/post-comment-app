@@ -6,28 +6,36 @@ import useFetch from '../../../utils/useFetch'
 import React from 'react'
 
 const PostComments = () => {
-  const [comments, setComments] = useState<CommentProps[]>([])
-  const params = useParams() as any
+  const [comments, setComments] = useState([])
+  const params = useParams()
   let commentsData,
     loading = useFetch(
-      `https://jsonplaceholder.typicode.com/posts/${params.id}/comments`
+      `https://jsonplaceholder.typicode.com/posts/${
+        (params as any).id
+      }/comments`
     )
 
   useEffect(() => {
     if (!loading) {
       setComments(commentsData)
     }
-  }, [commentsData, loading])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  return (
-    <>
-      {comments.map((comment) => (
-        <div key={comment.id}>
-          <p className={PostCommentsstyles.comment}>{comment.body}</p>
-        </div>
-      ))}
-    </>
-  )
+  if (!comments) {
+    ;<p>...Loading</p>
+  }
+
+  if (comments)
+    return (
+      <div>
+        {comments.map((comment: CommentProps) => (
+          <div key={comment.id}>
+            <p className={PostCommentsstyles.comment}>{comment.body}</p>
+          </div>
+        ))}
+      </div>
+    )
 }
 
 export default PostComments

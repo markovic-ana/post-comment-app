@@ -4,4 +4,5 @@ export interface CommentProps {
   name?: string
   body?: string
   comments?: CommentProps[]
+  comment?: CommentProps
 }
