@@ -4,7 +4,7 @@ import { PostProps } from '../../types/PostTypes'
 import useFetch from '../../utils/useFetch'
 import Detailsstyles from './Details.module.css'
 import { UserProps } from '../../types/UserTypes'
-import PostComments from './PostComments/PostComments'
+import PostComments from './postComments/PostComments'
 // import PostCommentsstyles from './PostComments.module.css'
 
 const Details = () => {
@@ -13,25 +13,26 @@ const Details = () => {
 
   let params = useParams() as any
 
-  let postData,
-    loading = useFetch(
-      `https://jsonplaceholder.typicode.com/posts?id=${params.id}`
+  let [postData] = useFetch(
+    `https://jsonplaceholder.typicode.com/posts?id=${params.id}`
+  ) as any
+  let [usersData] = useFetch(
+    `https://jsonplaceholder.typicode.com/users`
+  ) as any
+
+  useEffect(() => {
+    if (postData.length > 0) setPost(postData[0])
+  }, [postData])
+
+  useEffect(() => {
+    const author = usersData.find(
+      (user: { id: number }) => user.id === post.userId
     )
-  let usersData = useFetch(`https://jsonplaceholder.typicode.com/users`) as any
 
-  useEffect(() => {
-    if (!loading) {
-      setPost(postData[0])
-    }
-  }, [])
-
-  useEffect(() => {
-    const author = usersData.find((user) => user.id === post.userId)
-
-    if (!loading) {
+    if (usersData.length > 0) {
       setUser(author)
     }
-  }, [loading, post.userId, usersData])
+  }, [post.userId, usersData])
 
   if (!post) {
     return <h1>Loading...</h1>

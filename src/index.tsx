@@ -4,7 +4,7 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Routes } from '../node_modules/react-router-dom/index'
-import Posts from './components/PostList/Posts'
+import Posts from './components/postList/Posts'
 import Layout from './routes/Layout'
 
 ReactDOM.render(

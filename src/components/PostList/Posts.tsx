@@ -1,11 +1,11 @@
-import Post from './Post/Post'
+import Post from './post/Post'
 import { Link } from 'react-router-dom'
 import { useSearchParams } from '../../../node_modules/react-router-dom/index.js'
 import useFetch from '/Users/ana/Documents/Projects/Post-Comment-TypeScript-App/post-comment-app/src/utils/useFetch'
 import React, { useState, useEffect } from 'react'
 
 const Posts = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams('')
   const [posts, setPosts] = useState([])
   let [postsData, loading] = useFetch(
     'https://jsonplaceholder.typicode.com/posts'
