@@ -15,12 +15,11 @@ const Post: FunctionComponent<PostProps> = ({ title, body, id }) => {
     if (!loading) {
       setComments(commentsData)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
     const commentsOnPost = commentsData.filter(
-      (comment) => comment.postId === id
+      (comment: { postId: number }) => comment.postId === id
     )
 
     if (!loading) {
@@ -33,22 +32,26 @@ const Post: FunctionComponent<PostProps> = ({ title, body, id }) => {
   }
 
   return (
-    <div className={Poststyles.post} key={id}>
-      <h2 className={Poststyles.title}>{title}</h2>
-      <p className={Poststyles.text}>{body}</p>
-
-      {comments.map((comment) => (
-        <div key={comment.id}>
-          <p
-            style={{
-              textAlign: 'left',
-              paddingLeft: '0',
-            }}
-          >
-            {comment.body}
-          </p>
+    <div>
+      <div className={Poststyles.post} key={id}>
+        <h2 className={Poststyles.title}>{title}</h2>
+        <p className={Poststyles.text}>{body}</p>
+        <h3 className={Poststyles.commentTitle}>comments:</h3>
+        <div>
+          {comments.map((comment) => (
+            <div key={comment.id}>
+              <p
+                style={{
+                  textAlign: 'left',
+                  paddingLeft: '0',
+                }}
+              >
+                {comment.body}
+              </p>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   )
 }
