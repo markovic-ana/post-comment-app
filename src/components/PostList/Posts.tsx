@@ -51,7 +51,14 @@ const Posts = () => {
           .map((post) => (
             <div key={post.id}>
               <Link to={`/posts/${post.id}`}>
-                <Post post={post} />
+                <Post
+                  post={post}
+                  title={post.title}
+                  body={post.body}
+                  key={post.id}
+                  id={post.id}
+                  userId={post.userId}
+                />
               </Link>
             </div>
           ))}
